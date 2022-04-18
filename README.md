@@ -17,6 +17,21 @@ This is the code used for the thesis "The Effect of Higher Order Activation Func
 
 ## How to reproduce the results?
 
+Create a virtualenv:
+```
+virtualenv --python=python3 venv 
+```
+
+Activate the virtualenv:
+```
+source venv/bin/activate
+```
+
+Install the packages:
+```
+pip install -r requirements.txt
+```
+
 To produce the data:
 ```
 python3 ./src/data/sample_gaussian.py
