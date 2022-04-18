@@ -1,0 +1,28 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+m = 500
+n = 200
+
+# Direct approx
+plt.figure()
+for s in range(1,11):   
+    loss_dataframe = pd.read_json(f"models/directApproximation/radius=1/samples={n:04}/order={s:02}__width={m:04}.json", numpy=True)
+    loss = loss_dataframe[["loss"]].values
+    plt.semilogy(loss, label=f"s={s}")
+plt.legend()
+plt.xlabel("Epochs")
+plt.ylabel("Loss")
+plt.savefig(f"results/images/directApproximation/fixed_m__small_radius__overparametrized.pdf")
+
+# Taylor approx
+plt.figure()
+for s in range(1,11):   
+    loss_dataframe = pd.read_json(f"models/taylorApproximation/radius=1/samples={n:04}/order={s:02}__width={m:04}.json", numpy=True)
+    loss = loss_dataframe[["loss"]].values
+    plt.semilogy(loss, label=f"s={s}")
+plt.legend()
+plt.xlabel("Epochs")
+plt.ylabel("Loss")
+plt.savefig(f"results/images/taylorApproximation/fixed_m__small_radius__overparametrized.pdf")
+plt.show()
